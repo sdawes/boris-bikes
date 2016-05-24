@@ -6,4 +6,4 @@ The first challenge of the course is to imagine we are Junior Developers, employ
 
 We have been tasked with building a program that will run all the docking stations, simulate all the bikes and emulate all the infrastructure (vans, repair staff etc) required to implement their vision.
 
-STEVE
+BYE STEVE
