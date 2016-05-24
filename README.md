@@ -1,5 +1,5 @@
-Makers Academy - Week 1. Project 1.
-Boris Bikes
+<h1>Makers Academy - Week 1. Project 1.</h1>
+<h2>Boris Bikes</h2>
 
 The first challenge of the course is to imagine we are Junior Developers, employed by 
 Transport for London who are responsible for the delivery of a new bike system to plan a network of Docking Stations and bikes, that anyone can use for a small free. 
