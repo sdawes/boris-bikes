@@ -1,4 +1,4 @@
-<h1> Makers Academy - Week 1. Project 1.</h1>
+<h1>Makers Academy - Week 1. Project 1.</h1>
 
 <h2>Boris Bikes</h2>
 
