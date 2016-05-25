@@ -8,7 +8,7 @@ describe DockingStation do
       expect(subject).to respond_to :release_bike
     end
 
-    it 'releases a bike' do
+    it 'releases a bike from the station' do
       bike = Bike.new
       subject.dock(bike)
       # we want to release the bike we docked
@@ -28,7 +28,7 @@ describe DockingStation do
       # We want to return the bike we dock
       expect(subject.dock(bike)).to match_array(bike)
     end
-    
+
     it 'returns docked bikes' do
       bike = Bike.new
       subject.dock(bike)

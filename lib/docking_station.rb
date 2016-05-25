@@ -19,6 +19,7 @@ class DockingStation
     @bike
   end
 
+# =========== private methods ===========
   private
   def full?
     @bikes.count >= 20
