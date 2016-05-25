@@ -31,6 +31,6 @@ describe DockingStation do
         # remember subject == DockingStation.new
         expect { subject.release_bike }.to raise_error 'No bikes available'
       end
-    end
+  end
 
 end
