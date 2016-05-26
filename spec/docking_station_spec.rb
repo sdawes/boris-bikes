@@ -29,7 +29,7 @@ describe DockingStation do
       expect(subject.dock(bike)).to match_array(bike)
     end
 
-    it 'returns docked bikes' do
+    it 'returns the bike if the bike has been docked' do
       bike = Bike.new
       subject.dock(bike)
       # Again, we need to return the bike we just docked
@@ -37,10 +37,12 @@ describe DockingStation do
     end
 
     it 'raises an error when full' do
-      DockingStation::DEFAULT_CAPACITY.times do
-        subject.dock(Bike.new)
-      end
-      expect { subject.dock Bike.new }.to raise_error 'Docking station full'
+        subject.capacity.times { subject.dock(Bike.new) }
+        expect { subject.dock(Bike.new) }.to raise_error 'Docking station full'
+    end
+
+    it 'has a default capacity when no argument is given' do
+      expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
     end
 
   end
