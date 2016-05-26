@@ -1,29 +1,17 @@
-<<<<<<< HEAD
 require '~/documents/projects/boris-bikes/lib/docking_station.rb'
 require '~/documents/projects/boris-bikes/lib/bike.rb'
 
-docking_station = DockingStation.new
+station = DockingStation.new(5)
 bike = Bike.new
 
-docking_station.dock(bike).working?
-
-15.times { docking_station.dock Bike.new }
-
-docking_station
-=======
-require '~/boris-bikes/lib/docking_station.rb'  # ~> LoadError: cannot load such file -- ~/Users/Ross/boris-bikes/lib/docking_station.rb
-require '~/boris-bikes/lib/bike.rb'
-
-station = DockingStation.new
-bike = Bike.new
-bike.report_broken
-bike.broke?
 station.dock(bike)
+bike2 = Bike.new
 
-# ~> LoadError
-# ~> cannot load such file -- ~/Users/Ross/boris-bikes/lib/docking_station.rb
-# ~>
-# ~> /Users/Ross/.rvm/rubies/ruby-2.3.0/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /Users/Ross/.rvm/rubies/ruby-2.3.0/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /Users/Ross/boris-bikes/lib/feature_spec.rb:1:in `<main>'
->>>>>>> 7130b545f7cac99677c42ac5850d9af85f5cdc63
+station.dock(bike2)
+
+bike3 = Bike.new
+bike3.report_broken
+bike3
+
+station.dock(bike3)
+station.release_bike
