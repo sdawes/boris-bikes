@@ -1,14 +1,37 @@
 require 'docking_station'
 
 describe DockingStation do
-  it { is_expected.to respond_to :release_bike }
+
+  let(:bike) {Bike.new}
+
+  describe 'initialization' do
+
+    subject { DockingStation.new }
+
+    it 'defaults capacity' do
+      described_class::DEFAULT_CAPACITY.times do
+        subject.dock(bike)
+      end
+      expect { subject.dock(bike) }.to raise_error 'Docking station full'
+    end
+
+# ======== THE CODE BELOW WAS THE ORIGINAL TEST BEFORE IT WAS REFACTORED ABOVE ========
+    # it 'has a variable capacity' do
+    #   docking_station = DockingStation.new(50)
+    #   50.times {docking_station.dock(Bike.new) }
+    #   expect{ docking_station.dock(Bike.new) }.to raise_error 'Docking station full'
+    # end
+    # ==========================================================================
+  end
 
   describe '#release_bike' do
-    it 'releases a bike' do
-      bike = Bike.new
-      subject.dock(bike)
-      # we want to release the bike we docked
-      expect(subject.release_bike).to eq bike
+
+    it { is_expected.to respond_to :release_bike }
+
+      it 'releases working bikes' do
+      subject.dock(Bike.new)
+      bike = subject.release_bike
+      expect(bike).to be_working
     end
 
     it 'raises an error when there are no bikes available' do
@@ -24,12 +47,14 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error 'Bike is broken!'
     end
 
+    it { is_expected.to respond_to(:dock).with(1).argument }
+
   end
 
   describe '#dock' do
     it 'returns docked bikes' do
       bike = Bike.new
-      subject.dock(bike)
+      subject.dock(String.new("I'm not a bike!"))
       # Again, we need to return the bike we just docked
       expect(subject.bike).to eq @bikes
     end
@@ -50,25 +75,6 @@ describe DockingStation do
     end
 
 
-  end
-
-  describe 'initialization' do
-    subject { DockingStation.new }
-    let(:bike) { Bike.new }
-    it 'defaults capacity' do
-      described_class::DEFAULT_CAPACITY.times do
-        subject.dock(bike)
-      end
-      expect { subject.dock(bike) }.to raise_error 'Docking station full'
-    end
-
-# ======== THE CODE BELOW WAS THE ORIGINAL TEST BEFORE IT WAS REFACTORED ABOVE ========
-    # it 'has a variable capacity' do
-    #   docking_station = DockingStation.new(50)
-    #   50.times {docking_station.dock(Bike.new) }
-    #   expect{ docking_station.dock(Bike.new) }.to raise_error 'Docking station full'
-    # end
-    # ==========================================================================
   end
 
 end
